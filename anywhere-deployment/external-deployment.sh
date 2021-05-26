@@ -77,7 +77,7 @@ gettaskparameters() {
   export REGIONAL_WORKER=$(aws ecs describe-tasks --tasks $IN_REGION_TASK_ID --cluster $IN_REGION_CLUSTER_NAME)
   export TASK_DEFINITION_ARN=$(echo $REGIONAL_WORKER | jq '.tasks[].taskDefinitionArn' -r)
   export TASK_DEFINITION=$(aws ecs describe-task-definition --task-definition $TASK_DEFINITION_ARN)
-  export CHANGEME_IMAGE=$(echo $TASK_DEFINITION | jq '.taskDefinition.containerDefinitions[] | select(.image | contains("ecsworker")) | .image' -r)
+  export CHANGEME_IMAGE=$(echo $TASK_DEFINITION | jq '.taskDefinition.containerDefinitions[] | select(.image | contains("worker")) | .image' -r)
   export CHANGEME_EXECUTION_ROLE_ARN=$(echo $TASK_DEFINITION | jq '.taskDefinition.executionRoleArn' -r)
   export CHANGEME_TASK_ROLE_ARN=$(echo $TASK_DEFINITION | jq '.taskDefinition.taskRoleArn' -r)
   export CHANGEME_AWSLOGS_GROUP=$(echo $TASK_DEFINITION | jq '.taskDefinition.containerDefinitions[] | select(.image | contains("ecsworker")) | .logConfiguration.options."awslogs-group"' -r)
