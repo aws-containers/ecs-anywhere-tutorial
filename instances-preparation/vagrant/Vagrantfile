@@ -1,0 +1,10 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "ubuntu/focal64"
+  config.vm.synced_folder "./data", "/data"
+
+  config.vm.define "ecs-anywhere-1" do |node1|
+  end
+
+  config.vm.define "ecs-anywhere-2" do |node2|
+  end
+end

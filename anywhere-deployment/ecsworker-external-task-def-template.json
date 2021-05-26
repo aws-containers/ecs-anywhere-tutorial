@@ -1,0 +1,59 @@
+{
+    "executionRoleArn": "CHANGEME_EXECUTION_ROLE_ARN",
+    "containerDefinitions": [
+        {
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "CHANGEME_AWSLOGS_GROUP",
+                    "awslogs-region": "CHANGEME_REGION",
+                    "awslogs-stream-prefix": "external"
+                }
+            },
+            "cpu": 0,
+            "environment": [
+                {
+                    "name": "AWS_REGION",
+                    "value": "CHANGEME_REGION"
+                },
+                {
+                    "name": "EFS_DESTINATION_FOLDER",
+                    "value": "/data/destinationfolder/"
+                },
+                {
+                    "name": "EFS_SOURCE_FOLDER",
+                    "value": "/data/sourcefolder/"
+                },
+                {
+                    "name": "SQS_QUEUE_URL",
+                    "value": "CHANGEME_SQS_QUEUE_URL"
+                }
+            ],
+            "mountPoints": [
+                {
+                    "containerPath": "/data",
+                    "sourceVolume": "share"
+                }
+            ],
+            "image": "CHANGEME_IMAGE",
+            "essential": true,
+            "name": "ecsworker-external"
+        }
+    ],
+    "memory": "512",
+    "taskRoleArn": "CHANGEME_TASK_ROLE_ARN",
+    "family": "ecsworker-external",
+    "requiresCompatibilities": [
+        "EXTERNAL"
+    ],
+    "networkMode": "bridge",
+    "cpu": "256",
+    "volumes": [
+        {
+            "host": {
+                "sourcePath": "/data"
+            },
+            "name": "share"
+        }
+    ]
+}

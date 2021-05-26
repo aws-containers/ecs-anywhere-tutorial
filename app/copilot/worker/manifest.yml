@@ -1,0 +1,30 @@
+# The manifest for the "worker" service.
+
+# Your service name will be used in naming your resources like log groups, ECS services, etc.
+name: worker
+type: Backend Service
+
+# Your service does not allow any traffic.
+
+# Configuration for your containers and service.
+image:
+  build: Dockerfile
+
+cpu: 256       # Number of CPU units for the task.
+memory: 512    # Amount of memory in MiB used by the task.
+count: 1       # Number of tasks that should be running in your service.
+exec: true     # Enable running commands in your container.
+
+storage:
+  volumes:
+    myEFSVolume:
+      read_only: false
+      efs: true
+      path: '/data'
+
+# Optional fields for more advanced use-cases.
+#
+variables:                    # Pass environment variables as key value pairs.
+  EFS_SOURCE_FOLDER: "/data/sourcefolder/"
+  EFS_DESTINATION_FOLDER: "/data/destinationfolder/"              
+  AWS_REGION: "us-east-1"

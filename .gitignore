@@ -1,0 +1,6 @@
+docker-compose.yml
+ssm-activation.json
+main-setup-external.log
+ecsworker-external-task-def.json
+external-deployment.log
+.vagrant

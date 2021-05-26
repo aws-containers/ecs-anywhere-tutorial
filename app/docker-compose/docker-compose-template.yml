@@ -1,0 +1,27 @@
+services:
+  ecsworker-in-region:
+    environment: 
+        - SQS_QUEUE_URL=https://sqs.MYREGION.amazonaws.com/ACCOUNTNUMBER/main-queue
+        - EFS_SOURCE_FOLDER=/data/sourcefolder/             
+        - EFS_DESTINATION_FOLDER=/data/destinationfolder/              
+        - AWS_REGION=MYREGION
+    image: ACCOUNTNUMBER.dkr.ecr.MYREGION.amazonaws.com/ecsworker:amd64-slim
+    build: ../
+    volumes:
+        - efs-share:/data
+    x-aws-role:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: sqs:*
+          Resource: arn:aws:sqs:MYREGION:ACCOUNTNUMBER:main-queue
+volumes:
+  efs-share:
+
+x-aws-cloudformation:
+  Resources:
+    MainQueue:
+      Type: AWS::SQS::Queue
+      Properties: 
+        QueueName: main-queue
+
