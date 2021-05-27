@@ -47,7 +47,7 @@ welcome() {
   read -p " "
 }
 
-env_variables() {
+envvariables() {
   banner "Env Variables"
   logger "green" "Setting up environment variables..."
   export ECS_ANYWHERE_CLUSTER_NAME=ecsAnywhereCluster
@@ -80,8 +80,8 @@ gettaskparameters() {
   export CHANGEME_IMAGE=$(echo $TASK_DEFINITION | jq '.taskDefinition.containerDefinitions[] | select(.image | contains("worker")) | .image' -r)
   export CHANGEME_EXECUTION_ROLE_ARN=$(echo $TASK_DEFINITION | jq '.taskDefinition.executionRoleArn' -r)
   export CHANGEME_TASK_ROLE_ARN=$(echo $TASK_DEFINITION | jq '.taskDefinition.taskRoleArn' -r)
-  export CHANGEME_AWSLOGS_GROUP=$(echo $TASK_DEFINITION | jq '.taskDefinition.containerDefinitions[] | select(.image | contains("ecsworker")) | .logConfiguration.options."awslogs-group"' -r)
-  export CHANGEME_REGION=$(echo $TASK_DEFINITION | jq '.taskDefinition.containerDefinitions[] | select(.image | contains("ecsworker")) | .logConfiguration.options."awslogs-region"' -r)
+  export CHANGEME_AWSLOGS_GROUP=$(echo $TASK_DEFINITION | jq '.taskDefinition.containerDefinitions[] | select(.image | contains("worker")) | .logConfiguration.options."awslogs-group"' -r)
+  export CHANGEME_REGION=$(echo $TASK_DEFINITION | jq '.taskDefinition.containerDefinitions[] | select(.image | contains("worker")) | .logConfiguration.options."awslogs-region"' -r)
   export CHANGEME_SQS_QUEUE_URL=$(echo $TASK_DEFINITION | jq '.taskDefinition.containerDefinitions[].environment[] | select(.name=="SQS_QUEUE_URL") | .value' -r)
   echo "TASK_DEFINITION_ARN = " $TASK_DEFINITION_ARN
   echo "IMAGE =               " $CHANGEME_IMAGE
@@ -125,6 +125,7 @@ createexternalservice() {
 
 main() {
   welcome
+  envvariables
   checkclustertask
   gettaskparameters
   generateexternaltaskdef
