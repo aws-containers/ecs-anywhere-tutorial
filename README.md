@@ -1,6 +1,6 @@
 ### Introduction
 
-This tutorial is intended to walk you through an opinionated demonstration of how [ECS Anywhere](www.aws.amazon.com/ecs/anywhere) works. The initial steps will show you how to deploy a (somewhat) sophisticated multi services application in an AWS region as an ECS service running on [AWS Fargate](https://aws.amazon.com/fargate/). Further in the tutorial, the steps will guide you through how to deploy parts of this application on ECS Anywhere managed instances in a customer managed infrastructure outside of the AWS region. This tutorial is based on the code and workflow that has been used for the [re:Invent 2020 announcement of ECS Anywhere](https://aws.amazon.com/blogs/containers/introducing-amazon-ecs-anywhere/).
+This tutorial is intended to walk you through an opinionated demonstration of how [ECS Anywhere](https://aws.amazon.com/ecs/anywhere) works. The initial steps will show you how to deploy a (somewhat) sophisticated multi services application in an AWS region as an ECS service running on [AWS Fargate](https://aws.amazon.com/fargate/). Further in the tutorial, the steps will guide you through how to deploy parts of this application on ECS Anywhere managed instances in a customer managed infrastructure outside of the AWS region. This tutorial is based on the code and workflow that has been used for the [re:Invent 2020 announcement of ECS Anywhere](https://aws.amazon.com/blogs/containers/introducing-amazon-ecs-anywhere/).
 
 ---
 **NOTE**
