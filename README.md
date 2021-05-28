@@ -50,7 +50,7 @@ Depending on the path you will take in this tutorial, there may be additional pr
 
 ### The regional deployment  
 
-First of all, we will deploy the application in the aws region of your choice. During the [re:Invent demo](https://aws.amazon.com/blogs/containers/introducing-amazon-ecs-anywhere/) we have shown how to setup the regional deployment using the [Docker Compose integration with ECS](https://docs.docker.com/cloud/ecs-integration/). For this tutorial you have two options: 
+First of all, we will deploy the application in the aws region of your choice. During the [re:Invent demo](https://aws.amazon.com/blogs/containers/introducing-amazon-ecs-anywhere/) we have shown how to setup the regional deployment using [the new Docker Compose CLI that can deploy to Amazon ECS](https://docs.docker.com/cloud/ecs-integration/). For this tutorial you have two options: 
 
 - using [AWS Copilot](./app/copilot/README.md) 
 - using the [Docker Compose integration with ECS](./app/docker-compose/README.md) 

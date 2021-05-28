@@ -15,7 +15,7 @@ ECR_ECSWORKER_REPO_URI=$(echo $ECR_ECSWORKER_REPO | jq --raw-output .repository.
 aws ecr get-login-password --region $MYREGION | docker login --password-stdin --username AWS $ECR_ECSWORKER_REPO_URI 
 ```
 
-Now clone this repo and move into the `regional-deployment` folder. If you have `sed` installed and you are on a Mac you can run the following command to replace the `ACCOUNTNUMBER` and `MYREGION` placeholders in the `docker-compose.yml` file: 
+If you have `sed` installed and you are on a Mac you can run the following command to replace the `ACCOUNTNUMBER` and `MYREGION` placeholders in the `docker-compose.yml` file: 
 ```
 sed -e "s/MYREGION/$MYREGION/g" -e "s/ACCOUNTNUMBER/$ACCOUNTNUMBER/g" docker-compose-template.yml > docker-compose.yml 
 ```
