@@ -33,6 +33,8 @@ The application team can leverage ECS Anywhere to continue maintaining all the a
 
 To get started with the deployment you need an [AWS account](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/) and the [latest CLI installed](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html) and [configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html). Make sure that the region is configured properly. 
 
+You will also need [jq](https://stedolan.github.io/jq/download/).
+
 Also be sure that your shells throughout the tutorial have the following variables available. We will use them extensively. 
 ```
 export ACCOUNTNUMBER=<your account>
