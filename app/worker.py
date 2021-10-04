@@ -52,7 +52,11 @@ while True:
         
         # Business logic: rename file and move folder     
         print("Processing file " + source_folder+file_name + " and moving to " + destination_folder+file_name+"_has_been_processed\r")
-        os.rename(source_folder+file_name, destination_folder+file_name+"_has_been_processed")
+        try:
+            os.rename(source_folder+file_name, destination_folder+file_name+"_has_been_processed")
+        except OSError as err:
+            print("OS error: {0}".format(err))
+            
         time.sleep(10) # This adds some delay to make the demo flow slightly more realistic and easy to watch 
     
         #Delete received message from queue
